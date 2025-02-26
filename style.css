@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(./fonts/Roboto-Regular.woff2) format('woff2'),
+        url(./fonts/Roboto-Regular.woff) format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    background-color: lightblue;
+}
+
+header {
+    margin: 10px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 1060px;
+    margin-top: 20px;
+    color: #1f51ff;
+}
+
+h1 {
+    font-size: 40px;
+    display: inline;
+    font-weight: 700;
+}
+
+button {
+    display: inline;
+    background-color: blue;
+    color: white;
+    bottom: 5px;
+    padding: 10px 25px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+}
+
+#library {
+    margin: 10px auto 0 auto;
+    display: grid;
+    width: 1060px;
+    height: 100vh;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+}
+
+.card {
+    background-color: aliceblue;
+}
