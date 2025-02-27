@@ -37,7 +37,6 @@ button {
     display: inline;
     background-color: blue;
     color: white;
-    bottom: 5px;
     padding: 10px 25px;
     border-radius: 8px;
     border: none;
@@ -56,3 +55,37 @@ button {
 .card {
     background-color: aliceblue;
 }
+
+dialog {
+    position: relative;
+    top: 150px;
+    left: 275px;
+    width: 800px;
+    border: 2px solid blue;
+}
+
+form {
+    font-size: 24px;
+    padding: 20px 40px 20px 40px; 
+    color: blue;
+}
+
+fieldset {
+    border: none;
+    margin-top: 20px;
+}
+
+input {
+    line-height: 2;
+    width: 100%;
+    font-size: 20px;
+    border: 2px solid blue;
+}
+
+#add {
+    margin-left: 300px;
+    margin-top: 20px;
+}
+
+
+

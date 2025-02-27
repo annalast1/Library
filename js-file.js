@@ -23,3 +23,7 @@ const bookForm = document.querySelector("#book-info");
 bookForm.addEventListener("click", () => {
     dialog.showModal();
 })
+const addBook = Document.querySelector("#add");
+addBook.addEventListener("click", () => {
+  
+})
