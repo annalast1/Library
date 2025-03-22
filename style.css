@@ -10,91 +10,205 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: Roboto, sans-serif;
-    background-color: lightblue;
+    box-sizing: border-box;
 }
 
+/* Header */
 header {
-    margin: 10px auto 0 auto;
-    display: flex;
-    justify-content: space-between;
-    width: 1060px;
+    border-bottom: 3px solid lightgray;
+    height: 70px;
+    text-align: center;
+}
+
+#pageTitle {
     margin-top: 20px;
-    color: #1f51ff;
+    font-size: 45px;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 
-h1 {
-    font-size: 40px;
-    display: inline;
-    font-weight: 700;
+#subheading {
+    display: flex;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    justify-content: space-around;
 }
 
-button {
-    display: inline;
+#caption {
+    font-size: 25px;  
+    color: #36454f;  
+}
+
+/* books icon */ 
+#bookShelf {
+    margin-left: 10px;
+}
+
+#addBook {
+    padding: 10px 20px 10px 20px;
     background-color: blue;
     color: white;
-    padding: 10px 25px;
-    border-radius: 8px;
     border: none;
-    font-size: 18px;
+    border-radius: 10px;
+    font-size: 20px;
 }
 
-#library {
-    margin: 10px auto 0 auto;
-    display: grid;
-    width: 1060px;
-    height: 100vh;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+#tableBox {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.card {
-    background-color: aliceblue;
-}
-
+/* Dialog box and form*/
 dialog {
     position: relative;
-    top: 120px;
-    left: 275px;
-    width: 800px;
+    margin: 90px auto 0 auto;
+    width: 500px;
     background-color: transparent;
-    border: none;
+    border: 2px solid darkgrey;
 }
 
 form {
-    font-size: 24px;
-    padding: 20px 40px 20px 40px; 
-    color: blue;
-    background-color: antiquewhite;
-    border: 2px solid blue;
+    background-color: #e2dfe2;
+    letter-spacing: 1.5px;
+}
+
+form > input {
+    display: block;
+    line-height: 1.6;
+    width: 100%;
+    font-size: 20px;
+    outline: none;
+    border: 2px solid grey;
+    margin-bottom: 15px;
+
+}
+
+#bookForm {
+    padding: 50px;
+    background-color: white;
+}
+
+h3 {
+    margin-top: -25px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+legend {
+    margin-bottom: 8px;
+}
+
+input[type="radio"] {
+    margin-right: 15px;
+    margin-bottom: 15px;
+    transform: scale(1.3);
+}
+
+#radioBox {
+    font-size: 18px;
 }
 
 #close {
+    position: fixed;
+    top: 80px;
+    left: 416px;
+    height: 30px;
+    width: 30px;
+    font-weight: 700;
     background-color: red;
-    padding: 10px;
+    border: 2px solid black;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#submit {
     position: relative;
-    top: 20px;
+    bottom: -20px;
+    left: 150px;
+    padding: 10px;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    border: 1px solid blue;    
 }
 
-fieldset {
-    border: none;
-    margin-top: 20px;
+#submit:hover {
+    background-color: green;
 }
 
-input {
-    line-height: 2;
+/* Table Spacing */
+table {
+    table-layout: fixed;
     width: 100%;
-    font-size: 20px;
-    border: 2px solid blue;
+    border: 2px solid lightgrey;
+    border-collapse: collapse;
 }
 
-#add {
-    margin-left: 300px;
-    margin-top: 20px;
+thead th:nth-child(1) {
+    width: 30%;
+}
+
+thead th:nth-child(2) {
+    width: 18%;
+}
+
+thead th:nth-child(3) {
+    width: 18%;
+}
+
+thead th:nth-child(4) {
+    width: 8%;
+}
+
+thead th:nth-child(5) {
+    width: 15%;
+}
+thead th:nth-child(6) {
+    width: 10%;
+}
+
+thead th:nth-child(7) {
+    width: 10%;
+}
+
+th, td {
+    padding: 18px;
+}
+
+th {
+    letter-spacing: 2px;
+    text-align: center;
+}
+td {
+    letter-spacing: 1px;
+}
+
+tbody td {
+    text-align: center;
+}  
+  tbody tr:nth-child(even) {
+    background-color: #e5e4e2;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: lightgray;
+  }
+  
+  thead {
+    background-color: #7393b3;
+    color: white;
+  }
+
+input[type="checkbox"] {
+    transform: scale(2);
 }
 
 
