@@ -16,30 +16,25 @@
             <h3>Enter book details</h3>
             
                 <label for="title">Title</Title></label>
-                <input type="text" id="title" aria-required="true" required name="book-name">
-           
-           
+                <input type="text" id="title" name="title" aria-required="true" required name="book-name">
+                      
                 <label for="author">Author</label>
-                <input type="text" id="author" aria-required="true" required name="author-name">
-           
-           
+                <input type="text" id="author" name="author" aria-required="true" required name="author-name">
+                      
                 <label for="pages">Pages</label>
-                <input type="number" id="pages" aria-required="false" name="page-num"/>
-           
-               
+                <input type="number" id="pages" name="pages" aria-required="false" name="page-num"/>
+                          
                 <label for="desc">Description</label>
-                <input type="text" id="desc" aria-required="false" name="desc">
-           
-           
-                <legend>Have you read the book?</legend>
-                <div id="radioBox">
-                    <input type="radio" id="yes" name="read-status">Yes<br>
-                    <input type="radio" id="no" name="read-status">No<br>
+                <input type="text" id="desc" name="desc" aria-required="false" name="desc">
+                 
+                <div id="readBox">
+                    <label for="read-status" id="readLabel">Have you read the book?</label>
+                    <input type="checkbox" id="read-status" name="read-status">
+                </div>  
+                <div>
+                    <button type="button" id="submit">Submit</button>
+                    <button type="button" id="close">X</button>
                 </div>
-           <div>
-                <button type="submit" id="submit">Submit</button>
-                <button type="button" id="close">X</button>
-           </div>
         </form>
     </dialog>
     <section id="container">
@@ -49,7 +44,7 @@
         </div>
             <div id="tableBox">
             
-        </div>        
+            </div>        
         
     </section>
 </body>

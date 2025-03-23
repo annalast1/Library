@@ -1,12 +1,6 @@
-// form is checking checkbox on both yes and no
-
-// create array 
 const myLibrary = [];
-// DOM
-const bookForm = document.getElementById("bookForm");
-const dialog = document.querySelector("dialog");
-const submit = document.getElementById("submit");
-// object constructor
+
+// Book constructor
 function Book(title, author, pages, desc, read) {
     this.id = crypto.randomUUID();
     this.title = title;
@@ -16,129 +10,129 @@ function Book(title, author, pages, desc, read) {
     this.read = read;
     this.delete = null;
 };
-// show form
-const addBook = document.getElementById("addBook");
-addBook.addEventListener("click", () => {
-    bookForm.reset();
-    dialog.showModal();
-})
-
-// close form
-const cancel = document.getElementById("close");
-cancel.addEventListener("click", () => {
-    dialog.close();
-    bookForm.reset();
-})
-
-// add book to library
-submit.addEventListener("click", () => {
-    // get info from form
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
-    const pages = document.getElementById("pages").value;
-    const desc = document.getElementById("desc").value; 
-    const read = document.getElementsByName("read-status").value;   
-
-    addBookToLibrary(title, author, pages, desc, read);
-    // if table has already been created update display
-    if (myLibrary.length > 1){
-        updateTable();
-    } else displayBooks();
-})
-
-// create new book object and store
-function addBookToLibrary(title, author, pages, desc, read) {
-    const newBook = new Book(title, author, pages, desc, read);
-    myLibrary.push(newBook);
-}
-// create table to display books
-function displayBooks() {
-    const tableBox = document.getElementById("tableBox")
-    // create table, head and body
-    const table = document.createElement("table");
-    const thead = document.createElement("thead");
-    const tbody = document.createElement("tbody");
-
-    // create table headings
-    const tr = thead.insertRow(0)
-    const headers = ['Id', 'Title', 'Author', 'Pages', 'Description', 'Read?', 'Delete'];
-    headers.forEach(heading => {
-        const th = document.createElement("th");
-        th.textContent = heading;
-        tr.appendChild(th);
-    })
-    thead.appendChild(tr);
-    table.appendChild(thead);
-
-    // create cells
-    myLibrary.forEach( (book) => {
-        const tr = document.createElement("tr");
-        for (const item in book) {
-            const td = document.createElement("td");
-            if (item == 'delete') {
-                const deleteBtn = document.createElement("button");
-                deleteBtn.dataset.id = book.id;
-                const png = document.createElement("img");
-                png.src = './icon/image.png';                
-                deleteBtn.style.border = "none";
-                deleteBtn.addEventListener("click", () => {
-                    removeBook(deleteBtn.dataset.id)
-                })
-
-                deleteBtn.appendChild(png);
-                td.appendChild(deleteBtn);
-
-            } else if (item == 'read') {
-                const read = document.createElement('input');
-                read.setAttribute("type", "checkbox");
-                read.checked = book.read;             
-                read.name = 'readStatus';   
-                read.addEventListener("click", () => {
-                    book.readStatus(read.checked);
-                    console.log(book);
-                });
-                td.appendChild(read);
-
-
-            } else {
-                td.textContent = book[item];
-            }
-            tr.appendChild(td);
-            tbody.appendChild(tr);
-            table.appendChild(tbody);
-            tableBox.appendChild(table);
-        }
-    })
-}
-
-// remove books
-function removeBook(id) {
-    myLibrary.forEach(book => {
-        if (id == book.id) {
-            myLibrary.splice(book.id, 1);    
-        }
-        updateTable();
-    })
-}
-// update display
-function updateTable() {
-    const table = document.querySelector("table");
-    table.remove();
-    displayBooks();
-}
-
-// prototype
-function toggleReadStatus(bool) {
-    this.read = bool;
-}
-
-// add dummy books and display table
-addBookToLibrary('Mythago Wood', 'Robert Holdstock', 750, 'Fantasy', true);
-console.log(myLibrary[Book[0]]);
-addBookToLibrary('Green Fingers', 'A. Gardener', 180, 'Factual', false);
-displayBooks();
 
 Book.prototype.readStatus = function(bool) {
     this.read = bool;
 }
+// Create new object and store
+function addBookToLibrary(title, author, pages, desc, read) {
+    const newBook = new Book(title, author, pages, desc, read);
+    myLibrary.push(newBook);
+};
 
+// GET BOOK INFO
+
+// DOM
+const addBook = document.getElementById("addBook");
+const dialog = document.querySelector("dialog");
+const bookForm = document.getElementById("bookForm");
+const close = document.getElementById("close");
+const submit = document.getElementById("submit");
+
+// show form
+addBook.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+// close form
+close.addEventListener("click", () => {
+    dialog.close();
+    bookForm.reset();
+})
+
+// get form info
+submit.addEventListener("click", (e) => {
+    e.preventDefault;
+
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const desc = document.getElementById("desc").value;
+    const read = document.getElementById("read-status").checked;
+
+    addBookToLibrary(title, author, pages, desc, read);
+    dialog.close();
+    bookForm.reset(); 
+    updateTable();
+})
+
+function removeBook(id) {
+    myLibrary.forEach(book => {
+        if (id == book.id) {
+            myLibrary.splice(myLibrary.indexOf(book), 1);
+            console.log(book.id);
+        }
+        updateTable();
+    })
+}
+
+// Display library
+function displayBooks() {
+    const tableBox = document.getElementById("tableBox");
+    const table = document.createElement("table");
+    const thead = document.createElement("thead");
+    const tbody = document.createElement("tbody");
+    const headers = ['Id', 'Title', 'Author', 'Pages', 'Genre', 'Read?', 'Delete'];
+    tableBox.appendChild(table);
+
+    // create table headers
+    headers.forEach(title => {
+        const th = document.createElement("th");
+        th.textContent = title;
+        thead.appendChild(th);
+    })
+    table.appendChild(thead);
+    table.appendChild(tbody);
+
+    // add book info
+    myLibrary.forEach(book => {
+        const tr = document.createElement("tr");
+        tbody.appendChild(tr);
+        for (const entry in book) {
+            if (book.hasOwnProperty(entry)) {
+            const td = document.createElement("td");
+            switch (entry) {
+                case 'delete':
+                    const delBtn = document.createElement("button");
+                    delBtn.dataset.id = book.id;
+                    const png = document.createElement("img");
+                    png.src = './icon/image.png';
+                    delBtn.addEventListener("click", () => {
+                        removeBook(delBtn.dataset.id)
+                    });
+
+                    delBtn.appendChild(png);
+                    td.appendChild(delBtn);
+                    tr.appendChild(td);
+                    break;
+                case 'read':
+                    const check = document.createElement("input");
+                    check.type = "checkbox";
+                    check.name = 'readStatus';
+                    check.checked = book.read;
+                    check.addEventListener("click", () => {
+                        book.readStatus(check.checked);
+                        console.log(book);
+                    })
+                    
+                    td.appendChild(check);
+                    tr.appendChild(td);
+                    break;
+                default:
+                    td.textContent = book[entry];
+                    tr.appendChild(td);
+                    break;                   
+            }
+        }}
+    })  
+}
+
+function updateTable() {
+    const table = document.querySelector("table");
+    if (table != null) {
+    table.remove();
+    displayBooks();
+    }
+}
+
+displayBooks();
