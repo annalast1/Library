@@ -1,3 +1,5 @@
+// form is checking checkbox on both yes and no
+
 // create array 
 const myLibrary = [];
 // DOM
@@ -35,7 +37,7 @@ submit.addEventListener("click", () => {
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     const desc = document.getElementById("desc").value; 
-    const read = document.getElementsByName("read-status");   
+    const read = document.getElementsByName("read-status").value;   
 
     addBookToLibrary(title, author, pages, desc, read);
     // if table has already been created update display
@@ -77,8 +79,7 @@ function displayBooks() {
                 const deleteBtn = document.createElement("button");
                 deleteBtn.dataset.id = book.id;
                 const png = document.createElement("img");
-                png.src = './icon/image.png';
-                
+                png.src = './icon/image.png';                
                 deleteBtn.style.border = "none";
                 deleteBtn.addEventListener("click", () => {
                     removeBook(deleteBtn.dataset.id)
@@ -87,7 +88,6 @@ function displayBooks() {
                 deleteBtn.appendChild(png);
                 td.appendChild(deleteBtn);
 
-                
             } else if (item == 'read') {
                 const read = document.createElement('input');
                 read.setAttribute("type", "checkbox");
