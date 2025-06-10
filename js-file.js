@@ -1,14 +1,16 @@
 const myLibrary = [];
 
 // Book constructor
-function Book(title, author, pages, desc, read) {
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.desc = desc;
-    this.read = read;
-    this.delete = null;
+const Book = class {
+        constructor(title, author, pages, desc, read) {
+            this.id = crypto.randomUUID();
+            this.title = title;
+            this.author = author;
+            this.pages = pages;
+            this.desc = desc;
+            this.read = read;
+            this.delete = null;
+        }
 };
 
 Book.prototype.readStatus = function(bool) {
