@@ -15,6 +15,7 @@
 body {
     font-family: Roboto, sans-serif;
     box-sizing: border-box;
+    min-width: 800px;
 }
 
 /* Header */
@@ -65,9 +66,9 @@ header {
 
 /* Dialog box and form*/
 dialog {
-    position: relative;
+    position: fixed;
     margin: 90px auto 0 auto;
-    width: 500px;
+    min-width: 500px;
     background-color: transparent;
     border: 2px solid darkgrey;
 }
@@ -99,9 +100,9 @@ h3 {
 }
 
 #close {
-    position: fixed;
-    top: 80px;
-    left: 416px;
+    position: relative;
+    top: -393px;
+    left: -148px;
     height: 30px;
     width: 30px;
     font-weight: 700;
@@ -199,6 +200,19 @@ tbody td {
 
 input[type="checkbox"] {
     transform: scale(2);
+}
+
+/* indicate form validity */
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:invalid:required {
+  background-image: linear-gradient(to right, pink, lightgreen);
+}
+
+input:valid {
+  border: 2px solid black;
 }
 
 

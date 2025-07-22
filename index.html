@@ -15,20 +15,20 @@
         <form id="bookForm" method="dialog">
             <h3>Enter book details</h3>
             
-                <label for="title">Title</Title></label>
-                <input type="text" id="title" name="title" aria-required="true" required name="book-name">
+                <label for="title">Title (required)</Title></label>
+                <input type="text" id="title" name="title" required name="book-name" min="3" max="30">
                       
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author" aria-required="true" required name="author-name">
+                <label for="author">Author (required)</label>
+                <input type="text" id="author" name="author" required name="author-name" min="4">
                       
                 <label for="pages">Pages</label>
                 <input type="number" id="pages" name="pages" aria-required="false" name="page-num"/>
                           
-                <label for="desc">Description</label>
-                <input type="text" id="desc" name="desc" aria-required="false" name="desc">
+                <label for="desc">Description (required)</label>
+                <input type="text" id="desc" name="desc" name="desc" required min="4" max="100">
                  
                 <div id="readBox">
-                    <label for="read-status" id="readLabel">Have you read the book?</label>
+                    <label for="read-status" id="readLabel">Have you read the book? (required)</label>
                     <input type="checkbox" id="read-status" name="read-status">
                 </div>  
                 <div>

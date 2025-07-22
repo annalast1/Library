@@ -42,20 +42,27 @@ close.addEventListener("click", () => {
     bookForm.reset();
 })
 
+
 // get form info
 submit.addEventListener("click", (e) => {
     e.preventDefault;
 
+    // Check form validity and get data  
+     
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     const desc = document.getElementById("desc").value;
     const read = document.getElementById("read-status").checked;
 
-    addBookToLibrary(title, author, pages, desc, read);
-    dialog.close();
-    bookForm.reset(); 
-    updateTable();
+    if (title != '' && desc != '' && author != '') {
+        addBookToLibrary(title, author, pages, desc, read);
+        dialog.close();
+        bookForm.reset(); 
+        updateTable();
+    } else {
+        alert("Title, Author and Description must be filled in");
+    }
 })
 
 function removeBook(id) {
